@@ -64,7 +64,7 @@ Listarei agora o passo a passo resumido de como a Máquina Enigma funciona:
 * **Passo 6:** No painel de lampadas ele recebbe o sinal do passo anterior e acende uma lampada que representa o caracter cifrado, e dessa forma o processo é encerrado até que a proxima tecla seja pressionada reiniciando o ciclo.
 
 
-## Como funciona o pacote Enigma?
+## Sobre o Pacote Enigma
 
 A minha ideia foi trasnportar os principais elementos da máquina fisica para o código, que são:
 
@@ -77,6 +77,39 @@ Para utilizar o projeto basta baixar este repositorio e fazer o import como na l
 ```bash
 import "EnigmaMachine/enigma"
 ```
+
+### Como funciona o pacote?
+
+A primeira coisa a se fazer é criar uma instancia do objeto enigma que pode ser realizado da seguinte forma:
+
+```bash
+machine := &enigma.Enigma{}
+```
+
+Após ter instaciado o projeto, é necessario configurar scramblers (obrigatorio), reflector (caso seja necessário) e o plugboard (caso seja necessário), vamos começar pelo scrambler. Para adicionar um scrambler voce pode fazer da seguinte forma:
+
+```bash
+err := machine.AddScrambler("UWYGADFPVZBECKMTHXSLRINQOJ")
+```
+
+esta função recebe como parãmetro uma string que deve conter apenas caracteres de "A" a "Z", esses caracteres podem ser maiusculas ou minusculas mas tem que ter 26 letras representando todos os caracteres do alfabeto sem repetição, caso ocorra algum erro é possivel verificar no retorno do metodo. É possivel adicionar mais de um scrambler repetindo o mesmo processo com uma string diferente, dessa forma aumenta a complexidade do embaralhamento
+
+Além disso, caso seja necessario é preciso adicionar o reflector, isso pode ser realizado da seguinte forma:
+
+```bash
+err := machine.InsertReflector("UWYGADFPVZBECKMTHXSLRINQOJ")
+```
+
+O metodo **InsertReflector** respeita as mesmas regras como AddScrambbler, com a única diferença sendo que nesse caso não é possivel adicionar mais de um refletor, caso você chame a função novamente com outra string ela realizara a substituição do valor anterior.
+
+Caso seja necessário também, é possível inserir o plugboard da seguinte forma:
+
+```bash
+err := machine.SetPlugBoard([]string{"A-B", "S-Z", "U-Y", "G-H", "L-Q", "E-N"})
+```
+
+O método **SetPlugBoard**  ele recebe um slice de strings, as representações dos caracteres podem ser representados também sem o traço, funcionará da mesma forma.
+
 
 
 
