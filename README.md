@@ -49,6 +49,22 @@ Em última análise, a quebra da Enigma permitiu que os Aliados interceptassem e
 
 ![funcionamento_maquina_enigma](https://github.com/DaviPrograme/Enigma-Machine/assets/56012877/54f1bd7a-2762-4de4-be93-866cd2713015)
 
+Listarei agora o passo a passo de como a Máquina Enigma funciona:
+
+* **Passo 1:** Todo o processo da Máquina Enigma começa no teclado, quando uma tecla é pressionada é liberado um sinal que corresponde a letra, esse sinal passa primeiro pela placa de conexões;
+
+* **Passo 2:** Recebendo o sinal do Passo anterior, a placa de conexões faz uma validação para saber como proceder, por exemplo, se o sinal enviado pelo teclado foi a letra "A" e na placa de conexões a letra "A" esta plugada com a letra "F", neste caso o sinal vai ser alterado para representar a letra "F", caso contrario o sinal será enviado de como letra "A" mesmo, em ambos os caso o sinal vai ser enviado para o próximo passo, que são os rotores;
+
+* **Passo 3:** O sinal repassado pelo passo anterior chega nos rotores, aqui é o "coração" de todo o processo pois aqui é onde acontece a maior parte dos embaralhamentos. O rotor é uma peça cilindrica onde no seu entorno tem a representação dos 26 caracteres de "A" a "Z", toda vez que um sinal chega ao rotor mais a direita ele muda sua posição, então por exemplo, se antes do sinal o rotor estava na letra "A" ele passa para letra "B", recebe o sinal para o proximo rotor como sendo a letra "B" e os proximos rotores repetem o mesmo processo com excessão de que, o próximo rotor só vai mudar a sua posição quando o rotor da sua direita completar um giro completo, passando assim por todas as letras, e dessa forma o sinal e trasmitido para os proximos rotores onde cada um realizara a alteração do caracter até chegar no proximo passo, que é o refletor;
+
+* **Passo 4:** O sinal do passo anterior chega agora no refletor, que nada mais é que mais um rotor, mas com um pequena diferença, ao invés de ele passar o dado para frente ele faz a alteração do sinal, alterando assim mais uma vez a representação do caracter em questão e retorna esse dado pelo caminho que ele veio. Dessa forma, ele vai retornar por todos os rotres tendo assim mais uma rodada de alterações até passar pelo ultimo rotor mais a esquerda indo assim para o proximo passo que é a placa de conexões novamente;
+
+* **Passo 5:** Neste passo, ele repetira o processo do passo 2 avaliando qual foi a representação de caracter que os rotores enviaram, caso a letra em questão esteja plugada em outra letra o caracter será alterado mais uma vez, caso contrário não sofrerá alterações e sera enviado para o último passo, que é o painel de lâmpadas;
+
+* **Passo 6:** No painel de lampadas ele recebbe o sinal do passo anterior e acende uma lampada que representa o caracter cifrado, e dessa forma o processo é encerrado até que a proxima tecla seja pressionada reiniciando o ciclo.
+
+  
+
 
 
 
