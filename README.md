@@ -2,7 +2,7 @@
 
 ## O que é este projeto?
 
-Este projeto se trata de um pacote construido em Golang para emular o funcionamento da Máquiana Enigma utilizada na segunda guerra mundial  como forma de criptografas mensagens
+Este projeto se trata de um pacote construido em Golang para emular o funcionamento da Máquiana Enigma, máquina esta que foi utilizada na segunda guerra mundial como forma de criptografar mensagens
 
 ## O que me motivou a criar este projeto?
 
