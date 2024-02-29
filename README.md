@@ -110,6 +110,33 @@ err := machine.SetPlugBoard([]string{"A-B", "S-Z", "U-Y", "G-H", "L-Q", "E-N"})
 
 O método **SetPlugBoard**  ele recebe um slice de strings, as representações dos caracteres podem ser representados também sem o traço, funcionará da mesma forma.
 
+Com tudo isso configurado podemos encriptar uma mensagem da seguinte forma:
+
+```bash
+str, err := machine.Encrypter("ENIGMA", []uint8{0})
+```
+
+A função **Encrypter** recebe dois parâmetros, primeiro a mensagem a ser criptografada, depois um slice de uint8 que representa a posição inicial de cada scrambler, então por exemplo, colocar o valor como 0 representa que ele vai começar na letra "A", 1 representa a letra "B" e assim sucessivamente. Caso voce insira mais de um scrambler ele tera que receber a mesma quantidade de representações de posiciões iniciais conforma o exemplo abaixo:
+
+```bash
+plugs := []string{"A-B", "S-Z", "U-Y", "G-H", "L-Q", "E-N"}
+machine.AddScrambler("AJPCZWRLFBDKOTYUQGENHXMIVS")
+machine.AddScrambler("UWYGADFPVZBECKMTHXSLRINQOJ") 
+machine.AddScrambler("TAGBPCSDQEUFVNZHYIXJWLRKOM") 
+machine.InsertReflector("YRUHQSLDPXNGOKMIEBFZCWVJAT")
+str, err = machine.Encrypter("BLITZKRIEG", []uint8{0, 4, 1})
+```
+
+No caso acima eu passei as representações de 0 "A", 4 "E", 1 "B", caso eu tivesse passando uma quantidade maior ou menor  de estados iniciais ele geraria um erro.
+
+Para decriptar algo pode ser feito da seguinte forma:
+
+```bash
+str, err :=machine.Decrypter("GYHRVFLRXY", []uint8{0, 4, 1})
+```
+
+A função **Decrypter** segue a mesma lógica do metodo **Encrypter** com a unica diferrença que no  texto ele espera uma mensagem cifrada, de resto a lógica é a mesma :)
+
 
 
 
