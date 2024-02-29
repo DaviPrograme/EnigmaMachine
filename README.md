@@ -63,6 +63,23 @@ Listarei agora o passo a passo resumido de como a Máquina Enigma funciona:
 
 * **Passo 6:** No painel de lampadas ele recebbe o sinal do passo anterior e acende uma lampada que representa o caracter cifrado, e dessa forma o processo é encerrado até que a proxima tecla seja pressionada reiniciando o ciclo.
 
+
+## Como funciona o pacote Enigma?
+
+A minha ideia foi trasnportar os principais elementos da máquina fisica para o código, que são:
+
+* **Scrambler:** que é o rotor, responsável pelo embaralhamento;
+* **Reflector:** que é o refletor, o elemento que retorna o sinal para os rotores com mais uma alteração;
+* **Plugboard:** que é o painel onde são realizadas alterações do sinal antes e depois de passar pelos rotores.
+
+Para utilizar o projeto basta baixar este repositorio e fazer o import como na linha abaixo:
+
+```bash
+import "EnigmaMachine/enigma"
+```
+
+
+
   
 
 
