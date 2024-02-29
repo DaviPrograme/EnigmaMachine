@@ -49,7 +49,7 @@ Em última análise, a quebra da Enigma permitiu que os Aliados interceptassem e
 
 ![funcionamento_maquina_enigma](https://github.com/DaviPrograme/Enigma-Machine/assets/56012877/54f1bd7a-2762-4de4-be93-866cd2713015)
 
-Listarei agora o passo a passo de como a Máquina Enigma funciona:
+Listarei agora o passo a passo resumido de como a Máquina Enigma funciona:
 
 * **Passo 1:** Todo o processo da Máquina Enigma começa no teclado, quando uma tecla é pressionada é liberado um sinal que corresponde a letra, esse sinal passa primeiro pela placa de conexões;
 
