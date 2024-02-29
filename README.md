@@ -18,6 +18,9 @@ Bem, caso seja uma pessoa curiosa assim como eu o simples fato de saciar esta se
 
 ## Resumo da História da Maquina Enigma
 
+![Maquina-Enigma-Alemanha-nazismo](https://github.com/DaviPrograme/Enigma-Machine/assets/56012877/f5eb23db-0097-49bf-a9db-66f9f85e90e9)
+
+
 A máquina Enigma é uma das mais famosas e intrigantes máquinas criptográficas da história. Desenvolvida na Alemanha durante a década de 1920, foi projetada originalmente para uso comercial e governamental, mas eventualmente se tornou uma peça central da criptografia militar alemã durante a Segunda Guerra Mundial.
 
 A Enigma foi inventada pelo engenheiro alemão Arthur Scherbius, que patenteou sua primeira versão em 1918. No entanto, foi somente após sua aquisição pela empresa alemã Chiffriermaschinen Aktiengesellschaft (Chiffriermaschinen AG) que a máquina foi refinada e comercializada com o nome "Enigma", em 1923.
