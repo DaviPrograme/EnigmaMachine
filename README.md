@@ -33,4 +33,16 @@ A quebra da criptografia Enigma foi uma realização monumental, crucial para o 
 
 Em última análise, a quebra da Enigma permitiu que os Aliados interceptassem e decifrassem uma quantidade significativa de comunicações inimigas, fornecendo uma vantagem crucial que contribuiu para a vitória final na Segunda Guerra Mundial.
 
+## Princpais Partes da Máquina Enigma
+
+* **Teclado:** O teclado da máquina Enigma consiste em um conjunto de teclas, cada uma representando uma letra do alfabeto. Quando uma tecla é pressionada, um circuito elétrico é ativado, enviando um sinal elétrico através da máquina;
+
+* **Placa de Conexões:** O plugboard é uma parte da Enigma que permite a troca de letras antes e depois de passarem pelos rotores. Ele consiste em um conjunto de cabos que são conectados entre pares de letras. Por exemplo, se o "A" estiver conectado ao "F", sempre que o "A" for pressionado no teclado, ele será substituído pelo "F" antes de entrar nos rotores;
+
+* **Rotores:** Os rotores são o coração da máquina Enigma. Cada rotor é um disco metálico com contatos elétricos em cada lado, representando as letras do alfabeto. Os rotores são colocados em uma ordem específica na máquina e podem ser configurados de várias maneiras. Cada vez que uma tecla é pressionada, os rotores giram, alterando a substituição da letra. Isso aumenta drasticamente a complexidade da criptografia;
+  
+* **Painel de Lâmpadas:** O lampboard é onde as letras cifradas são exibidas. Após passarem pelos rotores e pelo plugboard, as letras são iluminadas no lampboard, revelando a letra cifrada correspondente à letra digitada no teclado. Isso permite que o operador leia a mensagem cifrada e a transcreva para entrega ou armazenamento.
+
+
+
 
