@@ -40,8 +40,15 @@ Em última análise, a quebra da Enigma permitiu que os Aliados interceptassem e
 * **Placa de Conexões:** O plugboard é uma parte da Enigma que permite a troca de letras antes e depois de passarem pelos rotores. Ele consiste em um conjunto de cabos que são conectados entre pares de letras. Por exemplo, se o "A" estiver conectado ao "F", sempre que o "A" for pressionado no teclado, ele será substituído pelo "F" antes de entrar nos rotores;
 
 * **Rotores:** Os rotores são o coração da máquina Enigma. Cada rotor é um disco metálico com contatos elétricos em cada lado, representando as letras do alfabeto. Os rotores são colocados em uma ordem específica na máquina e podem ser configurados de várias maneiras. Cada vez que uma tecla é pressionada, os rotores giram, alterando a substituição da letra. Isso aumenta drasticamente a complexidade da criptografia;
+
+* **Refletor**: O refletor é uma parte crucial da máquina Enigma que contribui para a complexidade da criptografia. Localizado após os rotores, o refletor serve para direcionar o circuito elétrico de volta através dos rotores após o sinal passar por eles. Ele consiste em um conjunto de contatos elétricos que refletem a corrente elétrica de volta através dos rotores, adicionando uma camada adicional de confusão à cifra.
   
 * **Painel de Lâmpadas:** O lampboard é onde as letras cifradas são exibidas. Após passarem pelos rotores e pelo plugboard, as letras são iluminadas no lampboard, revelando a letra cifrada correspondente à letra digitada no teclado. Isso permite que o operador leia a mensagem cifrada e a transcreva para entrega ou armazenamento.
+
+## Como a Máquina Enigma Funciona?
+
+![funcionamento_maquina_enigma](https://github.com/DaviPrograme/Enigma-Machine/assets/56012877/54f1bd7a-2762-4de4-be93-866cd2713015)
+
 
 
 
