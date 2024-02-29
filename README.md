@@ -33,7 +33,7 @@ A quebra da criptografia Enigma foi uma realização monumental, crucial para o 
 
 Em última análise, a quebra da Enigma permitiu que os Aliados interceptassem e decifrassem uma quantidade significativa de comunicações inimigas, fornecendo uma vantagem crucial que contribuiu para a vitória final na Segunda Guerra Mundial.
 
-## Princpais Partes da Máquina Enigma
+## Principais Partes da Máquina Enigma
 
 * **Teclado:** O teclado da máquina Enigma consiste em um conjunto de teclas, cada uma representando uma letra do alfabeto. Quando uma tecla é pressionada, um circuito elétrico é ativado, enviando um sinal elétrico através da máquina;
 
