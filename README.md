@@ -94,7 +94,7 @@ err := machine.AddScrambler("UWYGADFPVZBECKMTHXSLRINQOJ")
 
 esta função recebe como parãmetro uma string que deve conter apenas caracteres de "A" a "Z", esses caracteres podem ser maiusculas ou minusculas mas tem que ter 26 letras representando todos os caracteres do alfabeto sem repetição, caso ocorra algum erro é possivel verificar no retorno do metodo. É possivel adicionar mais de um scrambler repetindo o mesmo processo com uma string diferente, dessa forma aumenta a complexidade do embaralhamento
 
-Além disso, caso seja necessario é preciso adicionar o reflector, isso pode ser realizado da seguinte forma:
+Além disso, caso seja necessario adicionar o reflector, isso pode ser realizado da seguinte forma:
 
 ```bash
 err := machine.InsertReflector("UWYGADFPVZBECKMTHXSLRINQOJ")
