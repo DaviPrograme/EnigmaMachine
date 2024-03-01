@@ -64,6 +64,9 @@ Listarei agora o passo a passo resumido de como a Máquina Enigma funciona:
 * **Passo 6:** No painel de lampadas ele recebbe o sinal do passo anterior e acende uma lampada que representa o caracter cifrado, e dessa forma o processo é encerrado até que a proxima tecla seja pressionada reiniciando o ciclo.
 
 
+Caso tenha ficado dúvidas, segue um [video](https://www.youtube.com/watch?v=ybkkiGtJmkM&t=709s&ab_channel=JaredOwen) que me ajudou muito a entender o funcionamento interno da máquina.
+
+
 ## Sobre o Pacote Enigma
 
 A minha ideia foi trasnportar os principais elementos da máquina fisica para o código, que são:
@@ -136,10 +139,6 @@ str, err :=machine.Decrypter("GYHRVFLRXY", []uint8{0, 4, 1})
 ```
 
 A função **Decrypter** segue a mesma lógica do metodo **Encrypter** com a unica diferrença que no  texto ele espera uma mensagem cifrada, de resto a lógica é a mesma :)
-
-
-
-
   
 
 
