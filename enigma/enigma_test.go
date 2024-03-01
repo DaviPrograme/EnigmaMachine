@@ -322,6 +322,24 @@ func TestDecrypter(t *testing.T) {
 	if err == nil {
 		t.Errorf("The number of initial states of the scrambler must be equal to the number of scrambler")
 	}
+
+	e.ClearAll()
+
+	expectedValue = "ENI-GMA"
+	e.AddScrambler("UWYGADFPVZBECKMTHXSLRINQOJ")
+	str, err = e.Decrypter("FFQ-JPX", []uint8{0})
+	if str != expectedValue || err != nil {
+		t.Errorf(standardErrorMSG, expectedValue, str)
+	}
+
+	e.ClearAll()
+
+	expectedValue = "ENI GMA"
+	e.AddScrambler("UWYGADFPVZBECKMTHXSLRINQOJ")
+	str, err = e.Decrypter("FFQ JPX", []uint8{0})
+	if str != expectedValue || err != nil {
+		t.Errorf(standardErrorMSG, expectedValue, str)
+	}
 }
 
 func TestEncrypter(t *testing.T) {
@@ -374,5 +392,23 @@ func TestEncrypter(t *testing.T) {
 	_, err = e.Decrypter("GYHRVFLRXY", []uint8{0, 4})
 	if err == nil {
 		t.Errorf("The number of initial states of the scrambler must be equal to the number of scrambler")
+	}
+
+	e.ClearAll()
+
+	expectedValue = "FFQ-JPX"
+	e.AddScrambler("UWYGADFPVZBECKMTHXSLRINQOJ")
+	str, err = e.Encrypter("ENI-GMA", []uint8{0})
+	if str != expectedValue || err != nil {
+		t.Errorf(standardErrorMSG, expectedValue, str)
+	}
+
+	e.ClearAll()
+
+	expectedValue = "FFQ JPX"
+	e.AddScrambler("UWYGADFPVZBECKMTHXSLRINQOJ")
+	str, err = e.Encrypter("ENI GMA", []uint8{0})
+	if str != expectedValue || err != nil {
+		t.Errorf(standardErrorMSG, expectedValue, str)
 	}
 }

@@ -220,6 +220,10 @@ func (e Enigma) Decrypter(msg string, initialStateScramblers []uint8) (decrypted
 		}
 	}
 	for indexChar, char := range chars {
+		if !strings.Contains(alphabetStringInit, string(char)) {
+			decryptedMsg = decryptedMsg + string(char)
+			continue
+		}
 		for indexScramblers, _ := range scramblers {
 			if indexScramblers == 0 || indexChar != 0 && spinScramblers[indexScramblers-1] == 0 {
 				moveLeftRunes(alphabets[indexScramblers])
@@ -259,6 +263,10 @@ func (e Enigma) Encrypter(msg string, initialStateScramblers []uint8) (encrypted
 		}
 	}
 	for indexChar, char := range chars {
+		if !strings.Contains(alphabetStringInit, string(char)) {
+			encryptedMsg = encryptedMsg + string(char)
+			continue
+		}
 		for indexScramblers, _ := range scramblers {
 			if indexScramblers == 0 || indexChar != 0 && spinScramblers[indexScramblers-1] == 0 {
 				moveLeftRunes(alphabets[indexScramblers])
