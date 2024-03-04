@@ -228,8 +228,8 @@ func (e Enigma) Decrypter(msg string, initialStateScramblers []uint8) (decrypted
 			if indexScramblers == 0 || indexChar != 0 && spinScramblers[indexScramblers-1] == 0 {
 				moveLeftRunes(alphabets[indexScramblers])
 				moveLeftRunes(scramblers[indexScramblers])
+				spinScramblers[indexScramblers] = (spinScramblers[indexScramblers] + 1) % 26
 			}
-			spinScramblers[indexScramblers] = (spinScramblers[indexScramblers] + 1) % 26
 		}
 		index := e.decrypterChar(alphabets, scramblers, e.swapPlugBoard(char))
 		encryptedChar := alphabetRuneInit[index]
@@ -271,8 +271,8 @@ func (e Enigma) Encrypter(msg string, initialStateScramblers []uint8) (encrypted
 			if indexScramblers == 0 || indexChar != 0 && spinScramblers[indexScramblers-1] == 0 {
 				moveLeftRunes(alphabets[indexScramblers])
 				moveLeftRunes(scramblers[indexScramblers])
+				spinScramblers[indexScramblers] = (spinScramblers[indexScramblers] + 1) % 26
 			}
-			spinScramblers[indexScramblers] = (spinScramblers[indexScramblers] + 1) % 26
 		}
 		index := e.encrypterChar(0, alphabets, scramblers, uint8(strings.Index(alphabetStringInit, string(e.swapPlugBoard(char)))))
 		encryptedChar := alphabetRuneInit[index]
