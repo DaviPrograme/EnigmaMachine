@@ -8,6 +8,7 @@ import (
 
 type Enigma struct {
 	scramblers []string
+	ringGroove string
 	reflector  string
 	plugboard  map[string]string
 }
@@ -23,6 +24,28 @@ func moveLeftRunes(runes []rune) {
 		}
 		runes[index] = runes[index+1]
 	}
+}
+
+func (e *Enigma) setRingGroove(ringGroove string) error {
+	alphabet := "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+	ringGroove = strings.ReplaceAll(strings.ToUpper(ringGroove), " ", "")
+	if ringGroove == "" {
+		return errors.New("must contain characters from A to Z")
+	}
+	cpyRingGroove := strings.Clone(ringGroove)
+
+	for _, char := range alphabet {
+		cpyRingGroove = strings.ReplaceAll(cpyRingGroove, string(char), "")
+	}
+	if len(cpyRingGroove) != 0 {
+		return errors.New("must only contain characters A to Z")
+	}
+	e.ringGroove = ringGroove
+	return nil
+}
+
+func (e *Enigma) clearRingGroove() {
+	e.ringGroove = ""
 }
 
 func (e Enigma) CountScramblers() int {
@@ -195,6 +218,29 @@ func (e Enigma) swapPlugBoard(charSearch rune) rune {
 	return charSearch
 }
 
+func (e Enigma) scramblerMadeCompleteTurn(indexScrambler int, spinScramblersBefore, spinScramblersAfter []uint8) bool {
+	alphabet := "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+	if indexScrambler == -1 {
+		return true
+	}
+	if len(e.ringGroove) > indexScrambler {
+		charRingGroove := strings.Split(e.ringGroove, "")[indexScrambler]
+		charNow := strings.Split(alphabet, "")[spinScramblersAfter[indexScrambler]]
+		indexBeforeCharRingGroove := (strings.Index(alphabet, charRingGroove) - 1)
+		if indexBeforeCharRingGroove == -1 {
+			indexBeforeCharRingGroove = 25
+		}
+		if charRingGroove == charNow && spinScramblersBefore[indexScrambler] == uint8(indexBeforeCharRingGroove) {
+			return true
+		}
+		return false
+	}
+	if spinScramblersBefore[indexScrambler] == 25 && spinScramblersAfter[indexScrambler] == 0 {
+		return true
+	}
+	return false
+}
+
 func (e Enigma) Decrypter(msg string, initialStateScramblers []uint8) (decryptedMsg string, err error) {
 	countScramblers := len(e.scramblers)
 	countInitialStateScramblers := len(initialStateScramblers)
@@ -206,7 +252,6 @@ func (e Enigma) Decrypter(msg string, initialStateScramblers []uint8) (decrypted
 	scramblers := [][]rune{}
 	spinScramblers := []uint8{}
 	spinScramblers = append(spinScramblers, initialStateScramblers...)
-	chars := []rune(msg)
 	alphabetStringInit := "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 	alphabetRuneInit := []rune(alphabetStringInit)
 	for count := 0; count < countScramblers; count++ {
@@ -219,13 +264,15 @@ func (e Enigma) Decrypter(msg string, initialStateScramblers []uint8) (decrypted
 			moveLeftRunes(scramblers[index])
 		}
 	}
-	for indexChar, char := range chars {
+	for _, char := range msg {
 		if !strings.Contains(alphabetStringInit, string(char)) {
 			decryptedMsg = decryptedMsg + string(char)
 			continue
 		}
+		spinScramblersBefore := []uint8{}
+		spinScramblersBefore = append(spinScramblersBefore, spinScramblers...)
 		for indexScramblers, _ := range scramblers {
-			if indexScramblers == 0 || indexChar != 0 && spinScramblers[indexScramblers-1] == 0 {
+			if e.scramblerMadeCompleteTurn(indexScramblers-1, spinScramblersBefore, spinScramblers) {
 				moveLeftRunes(alphabets[indexScramblers])
 				moveLeftRunes(scramblers[indexScramblers])
 				spinScramblers[indexScramblers] = (spinScramblers[indexScramblers] + 1) % 26
@@ -247,7 +294,6 @@ func (e Enigma) Encrypter(msg string, initialStateScramblers []uint8) (encrypted
 	}
 	alphabets := [][]rune{}
 	scramblers := [][]rune{}
-	chars := []rune(msg)
 	spinScramblers := []uint8{}
 	spinScramblers = append(spinScramblers, initialStateScramblers...)
 	alphabetStringInit := "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
@@ -262,13 +308,15 @@ func (e Enigma) Encrypter(msg string, initialStateScramblers []uint8) (encrypted
 			moveLeftRunes(scramblers[index])
 		}
 	}
-	for indexChar, char := range chars {
+	for _, char := range msg {
 		if !strings.Contains(alphabetStringInit, string(char)) {
 			encryptedMsg = encryptedMsg + string(char)
 			continue
 		}
+		spinScramblersBefore := []uint8{}
+		spinScramblersBefore = append(spinScramblersBefore, spinScramblers...)
 		for indexScramblers, _ := range scramblers {
-			if indexScramblers == 0 || indexChar != 0 && spinScramblers[indexScramblers-1] == 0 {
+			if e.scramblerMadeCompleteTurn(indexScramblers-1, spinScramblersBefore, spinScramblers) {
 				moveLeftRunes(alphabets[indexScramblers])
 				moveLeftRunes(scramblers[indexScramblers])
 				spinScramblers[indexScramblers] = (spinScramblers[indexScramblers] + 1) % 26

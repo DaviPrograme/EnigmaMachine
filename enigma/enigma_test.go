@@ -34,6 +34,101 @@ func TestMoveLeftRunes(t *testing.T) {
 
 }
 
+func TestSetRingGroove(t *testing.T) {
+	var e Enigma
+
+	err := e.setRingGroove("")
+	if err == nil || e.ringGroove != "" {
+		t.Error("must contain characters from A to Z")
+	}
+
+	err = e.setRingGroove(" ")
+	if err == nil || e.ringGroove != "" {
+		t.Error("must contain characters from A to Z")
+	}
+
+	err = e.setRingGroove("AA-AA")
+	if err == nil || e.ringGroove != "" {
+		t.Error("must only contain characters A to Z")
+	}
+
+	expectedValue1 := "AAA"
+	err = e.setRingGroove("aaa")
+	if err != nil || e.ringGroove != expectedValue1 {
+		t.Errorf(standardErrorMSG, expectedValue1, e.ringGroove)
+	}
+
+	expectedValue2 := "BBB"
+	err = e.setRingGroove("b bb")
+	if err != nil || e.ringGroove != expectedValue2 {
+		t.Errorf(standardErrorMSG, expectedValue2, e.ringGroove)
+	}
+
+	expectedValue3 := "CCC"
+	err = e.setRingGroove("CCC")
+	if err != nil || e.ringGroove != expectedValue3 {
+		t.Errorf(standardErrorMSG, expectedValue3, e.ringGroove)
+	}
+}
+
+func TestClearRingGroove(t *testing.T) {
+	var e Enigma
+
+	e.ringGroove = "AAA"
+	e.clearRingGroove()
+	if e.ringGroove != "" {
+		t.Errorf(standardErrorMSG, "", e.ringGroove)
+	}
+}
+
+func TestScramblerMadeCompleteTurn(t *testing.T) {
+	var e Enigma
+	baseA := []uint8{0, 1, 1}
+	baseB := []uint8{25, 1, 2}
+	e.ringGroove = "AB"
+
+	expectedValue1 := true
+	if e.scramblerMadeCompleteTurn(0, baseB, baseA) != expectedValue1 {
+		t.Errorf(standardErrorMSG, expectedValue1, !expectedValue1)
+	}
+
+	expectedValue2 := false
+	if e.scramblerMadeCompleteTurn(0, baseA, baseB) != expectedValue2 {
+		t.Errorf(standardErrorMSG, expectedValue2, !expectedValue2)
+	}
+
+	e.ringGroove = "ZA"
+	expectedValue3 := false
+	if e.scramblerMadeCompleteTurn(0, baseB, baseA) != expectedValue3 {
+		t.Errorf(standardErrorMSG, expectedValue3, !expectedValue3)
+	}
+
+	e.ringGroove = "ABC"
+	expectedValue4 := false
+	if e.scramblerMadeCompleteTurn(1, baseB, baseA) != expectedValue4 {
+		t.Errorf(standardErrorMSG, expectedValue4, !expectedValue4)
+	}
+
+	e.ringGroove = "ABC"
+	expectedValue5 := false
+	if e.scramblerMadeCompleteTurn(1, baseA, baseB) != expectedValue5 {
+		t.Errorf(standardErrorMSG, expectedValue5, !expectedValue5)
+	}
+
+	e.ringGroove = "ABC"
+	expectedValue6 := false
+	if e.scramblerMadeCompleteTurn(2, baseB, baseA) != expectedValue6 {
+		t.Errorf(standardErrorMSG, expectedValue6, !expectedValue6)
+	}
+
+	e.ringGroove = "ABC"
+	expectedValue7 := true
+	if e.scramblerMadeCompleteTurn(2, baseA, baseB) != expectedValue7 {
+		t.Errorf(standardErrorMSG, expectedValue7, !expectedValue7)
+	}
+
+}
+
 func TestCountScramblers(t *testing.T) {
 	var e Enigma
 
