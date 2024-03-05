@@ -248,6 +248,7 @@ func (e Enigma) Decrypter(msg string, initialStateScramblers []uint8) (decrypted
 		err = fmt.Errorf("difference between number of scramblers (%d) and initialStateScramblers (%d)", countScramblers, countInitialStateScramblers)
 		return decryptedMsg, err
 	}
+	msg = strings.ToUpper(msg)
 	alphabets := [][]rune{}
 	scramblers := [][]rune{}
 	spinScramblers := []uint8{}
@@ -292,6 +293,7 @@ func (e Enigma) Encrypter(msg string, initialStateScramblers []uint8) (encrypted
 		err = fmt.Errorf("difference between number of scramblers (%d) and initialStateScramblers (%d)", countScramblers, countInitialStateScramblers)
 		return encryptedMsg, err
 	}
+	msg = strings.ToUpper(msg)
 	alphabets := [][]rune{}
 	scramblers := [][]rune{}
 	spinScramblers := []uint8{}
