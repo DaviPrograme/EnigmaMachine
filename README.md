@@ -122,11 +122,9 @@ str, err := machine.Encrypter("ENIGMA", []uint8{0})
 A função **Encrypter** recebe dois parâmetros, primeiro a mensagem a ser criptografada, depois um slice de uint8 que representa a posição inicial de cada scrambler, então por exemplo, colocar o valor como 0 representa que ele vai começar na letra "A", 1 representa a letra "B" e assim sucessivamente. Caso voce insira mais de um scrambler ele tera que receber a mesma quantidade de representações de posiciões iniciais conforma o exemplo abaixo:
 
 ```bash
-plugs := []string{"A-B", "S-Z", "U-Y", "G-H", "L-Q", "E-N"}
 machine.AddScrambler("AJPCZWRLFBDKOTYUQGENHXMIVS")
 machine.AddScrambler("UWYGADFPVZBECKMTHXSLRINQOJ") 
 machine.AddScrambler("TAGBPCSDQEUFVNZHYIXJWLRKOM") 
-machine.InsertReflector("YRUHQSLDPXNGOKMIEBFZCWVJAT")
 str, err = machine.Encrypter("BLITZKRIEG", []uint8{0, 4, 1})
 ```
 
